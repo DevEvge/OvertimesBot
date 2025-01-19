@@ -2,7 +2,7 @@ package commandManager;
 
 import bot.BotStatuses;
 import commandManager.commands.GetOvertimes;
-import commandManager.commands.statuses.OvertimesWritingSuccess;
+import commandManager.commands.statuses.OvertimesWritingStatus;
 import commandManager.commands.statuses.UnknownCommand;
 import commandManager.commands.WriteOvertimes;
 import commandManager.commands.Start;
@@ -25,7 +25,7 @@ public class CommandMap {
         commands.put("Новая запись⏰", new WriteOvertimes());
         commands.put("Мои овертаймы", new GetOvertimes());
 
-        listForCommand.add(new OvertimesWritingSuccess());
+        listForCommand.add(new OvertimesWritingStatus());
     }
 
     public Commands getCommandClass(Update update) {

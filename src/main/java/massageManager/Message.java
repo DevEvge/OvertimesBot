@@ -6,5 +6,4 @@ import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMar
 
 public interface Message {
     SendMessage massage(Update update, String message, ReplyKeyboardMarkup keyboard);
-    SendMessage massage(Update update, String message);
 }

@@ -16,15 +16,4 @@ public class MessageHandler implements Message{
                 .build();
         return sendMessage;
     }
-
-    @Override
-    public SendMessage massage(Update update, String message) {
-        Long chatID = update.getMessage().getChatId();
-        SendMessage sendMessage = SendMessage.builder()
-                .chatId(chatID).text(message)
-                .build();
-        return sendMessage;
-    }
-
-
 }

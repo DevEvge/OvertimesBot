@@ -1,6 +1,5 @@
 package bot;
 
-import application.OvertimesWriter;
 import commandManager.CommandMap;
 import commandManager.Commands;
 import commandManager.commands.statuses.UnknownCommand;
@@ -11,10 +10,9 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.telegram.telegrambots.meta.generics.TelegramClient;
 
-public class Bot extends BotConfig implements LongPollingSingleThreadUpdateConsumer {
+public class Bot implements LongPollingSingleThreadUpdateConsumer {
     private final TelegramClient telegramClient;
     private final CommandMap mapOfCommands;
-    private final OvertimesWriter overtimesWriter;
     private  SendMessage sendMessage;
     private  Commands commandClass;
     public static BotStatuses botStatus = BotStatuses.WAITING_DEFAULT;
@@ -22,7 +20,6 @@ public class Bot extends BotConfig implements LongPollingSingleThreadUpdateConsu
     public Bot(String botToken) {
         this.mapOfCommands = new CommandMap();
         this.telegramClient = new OkHttpTelegramClient(botToken);
-        this.overtimesWriter = new OvertimesWriter();
     }
 
     @Override
