@@ -8,6 +8,7 @@ public class MessageText {
     public static final String OVERTIMES_MESSAGE = "Введите кол-во часов перерботок в фомате 'ХХ.ХХ'";
     public static final String OVERTIMES_WRITE_ERROR = "Ошибка записи овертаймов, повторите";
     public static final String OVERTIMES_WRITE_SUCCESS = "Овертаймы записанны";
+    public static final String GET_OVERTIMES_PERIOD = "Выберете за какой период вы хотите увидеть овертаймы";
 
 
 }

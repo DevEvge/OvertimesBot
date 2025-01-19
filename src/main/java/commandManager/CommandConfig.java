@@ -1,26 +1,33 @@
 package commandManager;
 
-import keyboards.Keyboard;
+import keyboards.defaultKeyboard;
 import massageManager.MessageHandler;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
 
 public abstract class CommandConfig implements Commands {
     protected MessageHandler messageHandler;
-    protected Keyboard keyboard;
+    protected defaultKeyboard defaultKeyboard;
     private final String message;
 
 
     public CommandConfig(String message) {
         this.message = message;
-        this.keyboard = new Keyboard();
+        this.defaultKeyboard = new defaultKeyboard();
         this.messageHandler = new MessageHandler();
     }
 
     @Override
     public SendMessage command(Update update) {
-        return messageHandler.massage(update, message, keyboard.newKeyboard());
+        return messageHandler.massage(update, message, defaultKeyboard.newKeyboard());
     }
 
+    public SendMessage command(Update update, ReplyKeyboardMarkup keyboardMarkup) {
+        return messageHandler.massage(update, message, keyboardMarkup);
+    }
 
+    public SendMessage command(Update update, String message) {
+        return messageHandler.massage(update, message, defaultKeyboard.newKeyboard());
+    }
 }

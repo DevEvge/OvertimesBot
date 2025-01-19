@@ -15,21 +15,21 @@ import java.time.format.DateTimeFormatter;
 public class OvertimesWriter {
     DataBaseConnection database = new DataBaseConnection();
 
-    public Commands saveOvertimeToDB(Update update) {
+    public boolean saveOvertimeToDB(Update update) {
         String textFromMessage = update.getMessage().getText();
         String normalizer = textFromMessage.replace(",", ".");
         try {
             double time = Double.parseDouble(normalizer);
             if (time < 0) {
-                return new ErrorWritingOvertimes();
+                return false;
             }
 
             int hours = (int) time;
             double fractional = time - hours;
             double minutes = fractional * 100;
 
-            if (minutes >= 60 && hours >= 24) {
-                return new ErrorWritingOvertimes();
+            if (minutes >= 60 || hours >= 24) {
+                return false;
             }
 
             long chatID = update.getMessage().getChatId();
@@ -46,9 +46,9 @@ public class OvertimesWriter {
 
 
         } catch (NumberFormatException e) {
-            return new ErrorWritingOvertimes();
+            return false;
         }
-        return new OvertimesWritingSuccess();
+        return true;
     }
 
 

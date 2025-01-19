@@ -13,10 +13,11 @@ import org.telegram.telegrambots.meta.generics.TelegramClient;
 
 public class Bot extends BotConfig implements LongPollingSingleThreadUpdateConsumer {
     private final TelegramClient telegramClient;
-    CommandMap mapOfCommands;
-    OvertimesWriter overtimesWriter;
-    SendMessage sendMessage;
-    Commands commandClass;
+    private final CommandMap mapOfCommands;
+    private final OvertimesWriter overtimesWriter;
+    private  SendMessage sendMessage;
+    private  Commands commandClass;
+    public static BotStatuses botStatus = BotStatuses.WAITING_DEFAULT;
 
     public Bot(String botToken) {
         this.mapOfCommands = new CommandMap();
@@ -27,15 +28,14 @@ public class Bot extends BotConfig implements LongPollingSingleThreadUpdateConsu
     @Override
     public void consume(Update update) {
         if (update.hasMessage() && update.getMessage().hasText()) {
-            if (!isWaitingForDigit()) {
-                commandClass = mapOfCommands.getCommandClass(update);
-                if (commandClass == null) {
+            if (botStatus == BotStatuses.WAITING_DEFAULT) {  // Проверка ждем ли бот ввод цифр
+                commandClass = mapOfCommands.getCommandClass(update); //Проверет существует ли введенная команда
+                if (commandClass == null) { //Если нет то выводит что команды нет
                     commandClass = new UnknownCommand();
                 }
-
-                sendMessage = commandClass.command(update);
-            } else {
-                commandClass = overtimesWriter.saveOvertimeToDB(update);
+                sendMessage = commandClass.command(update); //Возвращает метод команды
+            } else { // Если бот ждет цифр
+                commandClass = mapOfCommands.getCommandFromList(botStatus);
                 sendMessage = commandClass.command(update);
             }
 

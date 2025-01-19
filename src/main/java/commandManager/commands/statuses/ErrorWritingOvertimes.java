@@ -1,6 +1,7 @@
 package commandManager.commands.statuses;
 
 import bot.Bot;
+import bot.BotStatuses;
 import commandManager.CommandConfig;
 import massageManager.MessageText;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
@@ -14,5 +15,10 @@ public class ErrorWritingOvertimes extends CommandConfig {
 
     public SendMessage command(Update update) {
         return super.command(update);
+    }
+
+    @Override
+    public BotStatuses getSupportedStatus() {
+        return null;
     }
 }
