@@ -11,23 +11,21 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 public class OvertimesWritingStatus extends CommandConfig {
     OvertimesWriter overtimesWriter = new OvertimesWriter();
 
-    public OvertimesWritingStatus() {
-        super(MessageText.OVERTIMES_WRITE_SUCCESS);
+    @Override
+    public BotStatuses getSupportedStatus() {
+        return BotStatuses.WAITING_FOR_WRITE_OVERTIMES;
     }
 
     public SendMessage command(Update update) {
         boolean isOvertimeWritedToDB = overtimesWriter.saveOvertimeToDB(update);
         Bot.botStatus = BotStatuses.WAITING_DEFAULT;
 
-        if (isOvertimeWritedToDB == true) {
+        if (isOvertimeWritedToDB) {
             return super.command(update, MessageText.OVERTIMES_WRITE_SUCCESS);
         } else {
             return super.command(update, MessageText.OVERTIMES_WRITE_ERROR);
         }
     }
 
-    @Override
-    public BotStatuses getSupportedStatus() {
-        return BotStatuses.WAITING_FOR_WRITE_OVERTIMES;
-    }
+
 }

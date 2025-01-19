@@ -1,11 +1,12 @@
 package commandManager.commands;
 
+import bot.Bot;
 import bot.BotStatuses;
 import commandManager.CommandConfig;
 import massageManager.MessageText;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
-import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
+
 
 public class GetOvertimes extends CommandConfig {
 
@@ -15,6 +16,7 @@ public class GetOvertimes extends CommandConfig {
     }
 
     public SendMessage command(Update update) {
+        Bot.botStatus = BotStatuses.WAITING_FOR_DATE;
         return super.command(update, defaultKeyboard.dateChoiseKeyboard());
     }
 

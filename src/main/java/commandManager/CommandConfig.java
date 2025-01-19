@@ -11,6 +11,11 @@ public abstract class CommandConfig implements Commands {
     protected Keyboard defaultKeyboard;
     private final String message;
 
+    public CommandConfig() {
+        this.message = null;
+        this.defaultKeyboard = new Keyboard();
+        this.messageHandler = new MessageHandler();
+    }
 
     public CommandConfig(String message) {
         this.message = message;

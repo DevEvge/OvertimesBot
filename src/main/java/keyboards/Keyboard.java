@@ -29,7 +29,7 @@ public class Keyboard {
 
         KeyboardRow row1 = new KeyboardRow();
         row1.add(new KeyboardButton("За текущий месяц"));
-        row1.add(new KeyboardButton("За прошлый месяц"));
+        row1.add(new KeyboardButton("За прошлый месяц (В разработке)"));
 
         keyboard.add(row1);
 

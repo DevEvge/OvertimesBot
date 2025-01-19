@@ -4,7 +4,6 @@ import DataBaseController.DataBaseConnection;
 import com.mongodb.client.MongoCollection;
 import org.bson.Document;
 import org.telegram.telegrambots.meta.api.objects.Update;
-
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -16,7 +15,7 @@ public class OvertimesWriter {
         String normalizer = textFromMessage.replace(",", ".");
         try {
             double time = Double.parseDouble(normalizer);
-            if (time < 0) {
+            if (time < 0.01) {
                 return false;
             }
 

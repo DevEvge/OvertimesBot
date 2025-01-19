@@ -4,8 +4,6 @@ import DataBaseController.DataBaseConnection;
 import com.mongodb.client.AggregateIterable;
 import com.mongodb.client.MongoCollection;
 import org.bson.Document;
-import org.telegram.telegrambots.meta.api.objects.Update;
-
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
@@ -14,7 +12,7 @@ public class OvertimesReader {
     DataBaseConnection database = new DataBaseConnection();
 
 
-    private Double overtimesForThisMonth(long chatID) {
+    public Double overtimesForThisMonth(long chatID) {
         MongoCollection<Document> collection = database.connectDatabase();
 
         LocalDate date = LocalDate.now();
@@ -25,11 +23,11 @@ public class OvertimesReader {
         String endDataStr = endOfMouth.toString();
 
         List<Document> pipeline = Arrays.asList(
-                new Document("$Match", new Document("ChatID", chatID)
+                new Document("$match", new Document("ChatID", chatID)
                         .append("Date", new Document("$gte", startDataStr)
                                 .append("$lt", endDataStr))),
                 new Document("$group", new Document("_id", "$ChatID")
-                        .append("totalHours", new Document("$sum", new Document("toDouble", "$hours"))))
+                        .append("totalHours", new Document("$sum", new Document("$toDouble", "$hours"))))
         );
 
         AggregateIterable<Document> result = collection.aggregate(pipeline);
