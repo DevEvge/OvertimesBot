@@ -9,12 +9,13 @@ import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMar
 
 public class GetOvertimes extends CommandConfig {
 
+
     public GetOvertimes() {
         super(MessageText.GET_OVERTIMES_PERIOD);
     }
 
-    public SendMessage command(Update update, ReplyKeyboardMarkup keyboardMarkup) {
-        return super.command(update, keyboardMarkup);
+    public SendMessage command(Update update) {
+        return super.command(update, defaultKeyboard.dateChoiseKeyboard());
     }
 
     @Override
