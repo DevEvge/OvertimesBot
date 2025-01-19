@@ -1,6 +1,5 @@
 package commandManager.commands;
 
-import bot.Bot;
 import bot.BotStatuses;
 import commandManager.CommandConfig;
 import massageManager.MessageText;
@@ -8,9 +7,9 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
 
-public class getOvertimes extends CommandConfig {
+public class GetOvertimes extends CommandConfig {
 
-    public getOvertimes() {
+    public GetOvertimes() {
         super(MessageText.GET_OVERTIMES_PERIOD);
     }
 

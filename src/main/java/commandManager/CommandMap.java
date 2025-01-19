@@ -1,10 +1,10 @@
 package commandManager;
 
 import bot.BotStatuses;
-import commandManager.commands.getOvertimes;
+import commandManager.commands.GetOvertimes;
 import commandManager.commands.statuses.OvertimesWritingSuccess;
 import commandManager.commands.statuses.UnknownCommand;
-import commandManager.commands.writeOvertimes;
+import commandManager.commands.WriteOvertimes;
 import commandManager.commands.Start;
 import org.telegram.telegrambots.meta.api.objects.Update;
 
@@ -22,8 +22,8 @@ public class CommandMap {
         this.listForCommand = new ArrayList<>();
 
         commands.put("/start", new Start());
-        commands.put("Новая запись⏰", new writeOvertimes());
-        commands.put("Мои овертаймы", new getOvertimes());
+        commands.put("Новая запись⏰", new WriteOvertimes());
+        commands.put("Мои овертаймы", new GetOvertimes());
 
         listForCommand.add(new OvertimesWritingSuccess());
     }

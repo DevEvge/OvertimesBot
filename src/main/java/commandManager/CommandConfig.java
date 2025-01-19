@@ -1,6 +1,6 @@
 package commandManager;
 
-import keyboards.defaultKeyboard;
+import keyboards.DefaultKeyboard;
 import massageManager.MessageHandler;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
@@ -8,13 +8,13 @@ import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMar
 
 public abstract class CommandConfig implements Commands {
     protected MessageHandler messageHandler;
-    protected defaultKeyboard defaultKeyboard;
+    protected DefaultKeyboard defaultKeyboard;
     private final String message;
 
 
     public CommandConfig(String message) {
         this.message = message;
-        this.defaultKeyboard = new defaultKeyboard();
+        this.defaultKeyboard = new DefaultKeyboard();
         this.messageHandler = new MessageHandler();
     }
 

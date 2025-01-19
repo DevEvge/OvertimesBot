@@ -7,10 +7,10 @@ import massageManager.MessageText;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
 
-public class writeOvertimes extends CommandConfig {
+public class WriteOvertimes extends CommandConfig {
 
 
-    public writeOvertimes() {
+    public WriteOvertimes() {
         super(MessageText.OVERTIMES_MESSAGE);
     }
 
