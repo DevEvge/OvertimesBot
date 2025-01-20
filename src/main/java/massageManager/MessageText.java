@@ -15,7 +15,7 @@ public class MessageText {
 
     public static String totalHoursForMonth(Double hours) {
         String hoursStr = String.format(Locale.US,"%.2f", hours);
-        return "\uD83D\uDCCA Количество овертаймов за месяц:" + hoursStr;
+        return "\uD83D\uDCCA Количество овертаймов за месяц: " + hoursStr;
     }
 
 }
