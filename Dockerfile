@@ -1,12 +1,15 @@
+# Этап сборки: используем официальный Maven образ
 FROM eclipse-temurin:17-jdk-alpine
 WORKDIR /app
 
-# Скопируем проект в контейнер
+# Копируем проект во внутрь контейнера
 COPY . /app
 
-# Соберём через Maven (если хотите собирать внутри контейнера)
-# Если уже собираете вне Docker, то можно просто COPY jar-файл.
+# Делаем mvnw исполняемым
+RUN chmod +x mvnw
+
+# Собираем проект с помощью Maven Wrapper
 RUN ./mvnw clean package -DskipTests
 
-# Запуск (примерно так, либо укажите точный jar)
+# Запускаем собранный JAR (укажите корректное имя файла)
 CMD ["java", "-jar", "target/Project_Avax-1.0-SNAPSHOT-jar-with-dependencies.jar"]
