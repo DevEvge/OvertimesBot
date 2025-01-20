@@ -13,8 +13,8 @@ public class Keyboard {
         List<KeyboardRow> keyboard = new ArrayList<>();
 
         KeyboardRow row1 = new KeyboardRow();
-        row1.add(new KeyboardButton("Новая запись⏰"));
-        row1.add(new KeyboardButton("Мои овертаймы"));
+        row1.add(new KeyboardButton("Новая запись\uD83D\uDCDD"));
+        row1.add(new KeyboardButton("Мои овертаймы⏰"));
 
         keyboard.add(row1);
 
@@ -28,8 +28,8 @@ public class Keyboard {
         List<KeyboardRow> keyboard = new ArrayList<>();
 
         KeyboardRow row1 = new KeyboardRow();
-        row1.add(new KeyboardButton("За текущий месяц"));
-        row1.add(new KeyboardButton("За прошлый месяц (В разработке)"));
+        row1.add(new KeyboardButton("За текущий месяц\uD83D\uDCC6"));
+        row1.add(new KeyboardButton("В разработке \uD83D\uDEA7"));
 
         keyboard.add(row1);
 

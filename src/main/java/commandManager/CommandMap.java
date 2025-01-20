@@ -23,8 +23,8 @@ public class CommandMap {
         this.listForCommand = new ArrayList<>();
 
         commands.put("/start", new Start());
-        commands.put("Новая запись⏰", new WriteOvertimes());
-        commands.put("Мои овертаймы", new GetOvertimes());
+        commands.put("Новая запись\uD83D\uDCDD", new WriteOvertimes());
+        commands.put("Мои овертаймы⏰", new GetOvertimes());
 
         listForCommand.add(new OvertimesWritingStatus());
         listForCommand.add(new OvertimesReaderStatus());
